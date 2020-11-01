@@ -8,7 +8,7 @@ PATHtoChromeDtiver = "./chromedriver"
 
 driver=webdriver.Chrome(PATHtoChromeDtiver)
 
-delimiter = ";:;"
+delimiter = "\t"
 
 def exportLineToFile(file, outputStr):
     file.write(outputStr + "\n")
@@ -16,7 +16,7 @@ def exportLineToFile(file, outputStr):
 
 def exportLawsList(url, fileName):
     print(url)
-    filePath = os.getcwd() + "/output/" + datetime.today().strftime('%Y-%m-%d-%H:%M:%S') + fileName + ".txt"
+    filePath = os.getcwd() + "/output/" + datetime.today().strftime('%Y-%m-%d %H:%M:%S') + fileName + ".txt"
     file = open( filePath , "a")
     
     pageId=1
@@ -60,3 +60,7 @@ exportLawsList("https://main.knesset.gov.il/Activity/Legislation/Laws/Pages/LawL
 exportLawsList("https://main.knesset.gov.il/Activity/Legislation/Laws/Pages/LawReshumot.aspx?t=lawreshumot&st=lawreshumotlaws&pn=", "LawReshumot")
 
 exportLawsList("https://main.knesset.gov.il/Activity/Legislation/Laws/Pages/LawSuggestionsSearch.aspx?t=lawsuggestionssearch&st=currentknesset&ki=23&sb=latestsessiondate&so=d&pn=", "LawSuggestions")
+
+print("finished")
+
+driver.quit()
