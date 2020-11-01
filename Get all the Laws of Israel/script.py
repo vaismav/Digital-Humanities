@@ -8,6 +8,8 @@ PATHtoChromeDtiver = "./chromedriver"
 
 driver=webdriver.Chrome(PATHtoChromeDtiver)
 
+delimiter = ";:;"
+
 def exportLineToFile(file, outputStr):
     file.write(outputStr + "\n")
 
@@ -29,7 +31,7 @@ def exportLawsList(url, fileName):
     tableHeaders = driver.find_elements_by_class_name("rgHeader.LawListHeaderRow")
     outputStr = ""
     for header in tableHeaders:
-        outputStr += header.text + ','
+        outputStr += header.text + delimiter
     exportLineToFile(file, outputStr)
     
     
@@ -45,7 +47,7 @@ def exportLawsList(url, fileName):
                 attributesList = element.find_elements(By.TAG_NAME, "td")
                 outputString = ""
                 for attribute in attributesList:
-                    outputString += attribute.text+ ','
+                    outputString += attribute.text+ delimiter
                 exportLineToFile(file,outputString)
         pageId += 1
 
@@ -54,3 +56,7 @@ def exportLawsList(url, fileName):
 
 
 exportLawsList("https://main.knesset.gov.il/Activity/Legislation/Laws/Pages/LawLaws.aspx?t=lawlaws&st=lawlaws&pn=", "LawLaws")
+
+exportLawsList("https://main.knesset.gov.il/Activity/Legislation/Laws/Pages/LawReshumot.aspx?t=lawreshumot&st=lawreshumotlaws&pn=", "LawReshumot")
+
+exportLawsList("https://main.knesset.gov.il/Activity/Legislation/Laws/Pages/LawSuggestionsSearch.aspx?t=lawsuggestionssearch&st=currentknesset&ki=23&sb=latestsessiondate&so=d&pn=", "LawSuggestions")
