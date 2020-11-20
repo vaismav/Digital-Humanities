@@ -1,0 +1,35 @@
+root:= law_form
+law_form:= Header content+ footer
+
+Header := title law_type date_of_publishig?
+
+title:= String 
+
+law_type:= base | regular | hour_order |...
+
+content:= (chapter | sub_content) notes* 
+
+sub_content:= content_note (section+ | paragraph+ )
+
+content_note:= String
+
+chapter:= chapter_header sub_content+
+
+section:= String | String secion+ | secion+ 
+
+footer:= signature+  last_fix_date?
+
+signature:= name job
+
+last_fix_date:= String
+date_of_publishig:= dd/mm/yyyy
+
+
+<?xml version="1.0"?>
+<!DOCTYPE law_form [
+<!ELEMENT law_form (header,content+,footer)>
+<!ELEMENT header (title,law_type,date_of_publishig>
+<!ELEMENT title ( #PCDATA | note)*>
+<!ELEMENT law_type (?????????)> 
+<!ELEMENT note (#PCDATA)>
+]>
