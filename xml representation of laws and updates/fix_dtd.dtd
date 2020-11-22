@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE fix_form [
+<!ELEMENT fix_form (header,(section | paragraph)+)>
+<!ELEMENT header (title,date_of_publishig?>
+<!ELEMENT title ( #PCDATA )>
+
+<!ELEMENT side_note ( #PCDATA | note)*>
+<!ATTLIST side_note action CDATA #REQUIRED>
+
+<!ELEMENT section (side_note?,(#PCDATA|note)*,section*)>
+<!ATTLIST section action CDATA #REQUIRED>
+<!ATTLIST section id CDATA #REQUIRED>
+
+
+<!ELEMENT paragraph (side_note?,#PCDATA|note)*> 
+<!ATTLIST paragraph action CDATA #REQUIRED>
+<!ATTLIST paragraph id CDATA #REQUIRED>
+
+<!ELEMENT date_of_publishig (#PCDATA)>  
+<!ELEMENT note (#PCDATA)>
+]>

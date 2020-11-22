@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE law_form [
+<!ELEMENT law_form (header,content+,footer)>
+<!ELEMENT header (title,date_of_publishig?>
+<!ELEMENT title ( #PCDATA | note)*>
+<!ELEMENT content (side_note?, content_header?, (section+ | paragraph+))>
+<!ELEMENT side_note ( #PCDATA | note)*> 
+<!ELEMENT section (side_note?,(#PCDATA|note)*,section*)>
+<!ATTLIST section last_fix_date CDATA #IMPLIED>
+
+<!ELEMENT paragraph (side_note?,#PCDATA|note)*> 
+<!ELEMENT content_header (#PCDATA|note)*> 
+<!ELEMENT date_of_publishig (#PCDATA)> 
+<!ELEMENT footer (signature+, last_fix_date?)> 
+<!ELEMENT signature (name,job )> 
+<!ELEMENT name (#PCDATA )> 
+<!ELEMENT job (#PCDATA )> 
+<!ELEMENT note (#PCDATA)>
+]>
