@@ -12,12 +12,10 @@ class Xml_modifier:
         self.fix_tree = ET.parse(fix_law_xml)
         self.fix_root = self.fix_tree.getroot()
 
-    def change(self,element,id,full_content,date):
+    def update(self,fix_element,output_element):
         """
-        :param element: The element type - paragraph or section.
-        :param id: The secion id to be modified.
-        :param full_content: The full text of the modified element.
-        :param date: Date of fixing TODO- decide if date should stay as a paramete?
+        :param fix_element: the element to fix
+        :param output_element: The element of the output with its origenal value
         :return: void
         """
         pass
@@ -40,22 +38,71 @@ class Xml_modifier:
         """
         pass
 
-    def main(self):
-        next_element=""
-        index=0
+
+    def iterate_sections(self):
        
         # print(self.fix_root.tag)
         # print(self.original_root.tag)
-        for description in self.original_root.iter('section'):
-            print(description.text)
+        for element in self.original_root.iter('section'):
+            text = element.text
+            for sub_element in element.iter():
+                if sub_element.tag == "note":
+                    text = text + "<note>"+sub_element.text+"</note>"
+                text= text + sub_element.tail
+            print("\n section text: "+text.translate(str.maketrans('', '', '\n\r\t')))
+        
+        pass
 
-        for description in self.original_root.iter('section'):
-            description.text="avishai"
+    def iter_n_print(self,element):
+        if element.tag != None:
+            print("<"+element.tag+">"+element.text)
+            for sub_element in element:
+                self.iter_n_print(sub_element)
 
-        for description in self.original_root.iter('section'):
-            print(description.text)
+            print("</"+element.tag+">"+str(element.tail))
 
-        self.original_tree.write("output.xml", encoding="UTF-8")
+        pass
+
+
+    def update_blank(self,element, output_element ):
+        if element.get("action") == "remove":
+            return None
+        return None
+
+
+    def get_output_element(self,element_type, output_content_id):
+        _id = 0
+        target_id = int(output_content_id)
+        for content in self.original_root.iter(element_type):
+            _id = _id +1 
+            if _id == target_id:
+                return content
+        return None
+    
+
+    def main(self):
+        for content in self.fix_root.iter('content'):
+            output_content = self.get_output_element('content',content.get("id"))
+            if content.get("action") == "update-blank":
+                self.update_blank(content, output_content)
+            
+            elif content.get("action") == "update":
+                self.update(content, output_content)
+            
+            elif content.get("action") == "add":
+                self.add(content, self.original_root)
+            
+            elif content.get("action") == "remove":
+                self.fix_root.remove(content)
+    
+
+        # for description in self.original_root.iter('section'):
+        #     description.text="avishai"
+
+        # for description in self.original_root.iter('section'):
+        #     print(description.text)
+
+        # self.original_tree.write("output.xml", encoding="UTF-8")
 
 
 
