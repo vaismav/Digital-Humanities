@@ -57,9 +57,8 @@ class Xml_modifier:
                 element_tag_index = element_tag_index + 1
             if element_tag_index ==int(element.get("id")):
                 output_containing_element.insert(index,element)
-                pass
+                return
         
-        pass
 
 
     def iterate_sections(self):

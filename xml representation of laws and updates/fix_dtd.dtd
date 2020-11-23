@@ -2,19 +2,22 @@
 <!DOCTYPE fix_form [
 <!ELEMENT fix_form (header,content+)>
 <!ELEMENT header (title,date_of_publishig?>
-<!ELEMENT title ( #PCDATA )>
+<!ELEMENT title ( text )>
 
 <!ELEMENT content (side_note?, content_header?, (section+ | paragraph+))>
 <!ATTLIST content action CDATA #REQUIRED>
 <!ATTLIST content id CDATA #REQUIRED>
 
-<!ELEMENT side_note ( #PCDATA | note)*>
+<!ELEMENT side_note (text)>
 <!ATTLIST side_note action CDATA #REQUIRED>
 
-<!ELEMENT section (side_note?,(#PCDATA|note)*,section*)>
+<!ELEMENT section (side_note?,text?,section*)>
 <!ATTLIST section action CDATA #REQUIRED>
 <!ATTLIST section id CDATA #REQUIRED>
 
+<!ELEMENT text ( #PCDATA | note)*>
+<!ATTLIST text action CDATA #REQUIRED>
+<!ATTLIST text id CDATA #REQUIRED>
 
 <!ELEMENT paragraph (side_note?,#PCDATA|note)*> 
 <!ATTLIST paragraph action CDATA #REQUIRED>
