@@ -12,6 +12,19 @@ class Xml_modifier:
         self.fix_tree = ET.parse(fix_law_xml)
         self.fix_root = self.fix_tree.getroot()
 
+    def get_output_element(self,element, output_element):
+        """
+        :param element: the element to fix in the fix-form
+        :param output_element: The element of the output which contain the 
+        """
+        _id = 0
+        target_id = int(element.get("id"))
+        for content in output_element.iter(element.tag):
+            _id = _id +1 
+            if _id == target_id:
+                return content
+        return None
+
     def update(self,fix_element,output_element):
         """
         :param fix_element: the element to fix
@@ -20,22 +33,32 @@ class Xml_modifier:
         """
         pass
 
-    def delete(self,element,id):
+    def delete(self,sub_element,output_element):
         """
-        :param element: The element type - paragraph or section.
-        :param id: The element id to be deleted.
+        :param element: The sub element from the fix-form
+        :param id: the element from the law-form which need to remove the sub-element.
         :return: void
         """
+        output_element.remove(self.get_output_element( sub_element,output_element))
         # self.original_law_xml=self.original_law_xml+" changed"
         pass
 
-    def add(self,element,after_element_id ,full_content):
+    def add(self,element,output_containing_element ):
         """
         :param element: The element type - paragraph or section.
-        :param after_element_id: The id of the element to be added after. 
-        :param full_content:The full text of the added element.
+        :param output_containing_element: The output element which need to contain the new element
         :return:
         """
+        index = 0
+        element_tag_index = 0 # the counter for the elements of the element.tag
+        for output_sub_element in output_containing_element.iter():
+            index = index +1
+            if output_sub_element.tag == element.tag:
+                element_tag_index = element_tag_index + 1
+            if element_tag_index ==int(element.get("id")):
+                output_containing_element.insert(index,element)
+                pass
+        
         pass
 
 
@@ -65,24 +88,24 @@ class Xml_modifier:
 
 
     def update_blank(self,element, output_element ):
-        if element.get("action") == "remove":
-            return None
-        return None
+        for sub_element in element.iter():
+            if sub_element.tag != None:
+                if sub_element.get("action") == "remove":
+                    self.delete(sub_element,output_element)
+                elif sub_element.get("action") == "update-blank":
+                    self.update_blank(sub_element,self.get_output_element(sub_element,output_element))
+                elif sub_element.get("action") == "update":
+                    self.update(sub_element,self.get_output_element(sub_element,output_element))
+                elif sub_element.get("action") == "add":
+                    self.add(sub_element, output_element)
 
 
-    def get_output_element(self,element_type, output_content_id):
-        _id = 0
-        target_id = int(output_content_id)
-        for content in self.original_root.iter(element_type):
-            _id = _id +1 
-            if _id == target_id:
-                return content
-        return None
+    
     
 
     def main(self):
         for content in self.fix_root.iter('content'):
-            output_content = self.get_output_element('content',content.get("id"))
+            output_content = self.get_output_element(content,self.original_root)
             if content.get("action") == "update-blank":
                 self.update_blank(content, output_content)
             
@@ -93,7 +116,7 @@ class Xml_modifier:
                 self.add(content, self.original_root)
             
             elif content.get("action") == "remove":
-                self.fix_root.remove(content)
+                self.delete(content,self.fix_root)
     
 
         # for description in self.original_root.iter('section'):
