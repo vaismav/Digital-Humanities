@@ -2,37 +2,55 @@
 <fix_form>
     <header>
         <title>
+            <text>
             חוק-יסוד: כבוד האדם וחירותו
+            </text>
         </title>
         <date_of_publishing>
 
         </date_of_publishing>
     </header>
+
     <content action="update-blank" id="1">
     <section action="update" id="1">
         <side_note action="update">
+            <text>
             עקרונות יסוד
+            </text>
         </side_note>
+        <text>
         זכויות היסוד של האדם בישראל מושתתות על ההכרה בערך האדם, בקדושת חייו ובהיותו בן-חורין, והן יכובדו ברוח העקרונות שבהכרזה על הקמת מדינת ישראל.
+        </text>
 
         <section action="add" id="0">
             <side_note action="add">
-                מטרה
+                <text>
+                    מטרה
+                </text>
             </side_note>
-            חוק-יסוד זה, מטרתו להגן על כבוד האדם וחירותו, כדי לעגן בחוק-יסוד את ערכיה של מדינת ישראל כמדינה יהודית ודמוקרטית.
+            <text>
+                חוק-יסוד זה, מטרתו להגן על כבוד האדם וחירותו, כדי לעגן בחוק-יסוד את ערכיה של מדינת ישראל כמדינה יהודית ודמוקרטית.
+            </text>
         </section>
     </section>
 
     <section action="update" id="7">
+        <text>
         אין פוגעים בזכויות שלפי חוק-יסוד זה אלא בחוק ההולם את ערכיה של מדינת ישראל, שנועד לתכלית ראויה, ובמידה שאינה עולה על הנדרש, או לפי חוק כאמור מכוח הסמכה מפורשת בו.
+        </text>
     </section>
 
-<section action="update-blank" id="8">
-    <section action="update" id="1">
-        <section action="update" id="3">
-            <section action="update" id="1">
-                אין פוגעים בזכויות שלפי חוק-יסוד זה אלא בחוק ההולם את ערכיה של מדינת ישראל, שנועד לתכלית ראויה, ובמידה שאינה עולה על הנדרש, או לפי חוק כאמור מכוח הסמכה מפורשת בו.
-            </section>        </section>    </section></section>
+    <section action="update-blank" id="8">
+        <section action="update" id="1">
+            <section action="update" id="3">
+                <section action="update" id="1">
+                    <text>
+                        אין פוגעים בזכויות שלפי חוק-יסוד זה אלא בחוק ההולם את ערכיה של מדינת ישראל, שנועד לתכלית ראויה, ובמידה שאינה עולה על הנדרש, או לפי חוק כאמור מכוח הסמכה מפורשת בו.
+                    </text>
+                </section>
+            </section>
+        </section>
+    </section>
 
-</content>
+    </content>
 </fix_form>
