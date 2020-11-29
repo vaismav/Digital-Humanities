@@ -11,14 +11,14 @@
     </header>
 
     <content action="update-blank" id="1">
-    <section action="update" id="1">
-        <side_note action="update" id="1">
-            <text>
+    <section action="update-blank" id="1">
+        <side_note action="update-blank" id="1">
+            <text  action="update" id="1">
                 עקרונות יסוד תוקן
             </text>
         </side_note>
         
-        <text>
+        <text  action="update" id="1">
         זכויות היסוד של האדם בישראל מושתתות על ההכרה בערך האדם, בקדושת חייו ובהיותו בן-חורין, והן יכובדו ברוח העקרונות שבהכרזה על הקמת מדינת ישראל. תוקן
         </text>
 
@@ -34,16 +34,11 @@
         </section>
     </section>
 
-    <section action="update" id="7">
-        <text>
+    <section action="update-blank" id="8">
+        <text action="update" id="1">
         אין פוגעים בזכויות שלפי חוק-יסוד זה אלא בחוק ההולם את ערכיה של מדינת ישראל, שנועד לתכלית ראויה, ובמידה שאינה עולה על הנדרש, או לפי חוק כאמור מכוח הסמכה מפורשת בו. תוקן
         </text>
     </section>
 
-    <section action="update" id="8">
-        <text>
-            אין פוגעים בזכויות שלפי חוק-יסוד זה אלא בחוק ההולם את ערכיה של מדינת ישראל, שנועד לתכלית ראויה, ובמידה שאינה עולה על הנדרש, או לפי חוק כאמור מכוח הסמכה מפורשת בו. תוקן
-        </text>
-    </section>
     </content>
 </fix_form>
