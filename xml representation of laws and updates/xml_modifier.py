@@ -41,70 +41,7 @@ class Xml_modifier:
         print(("fixed:  " + fix_element.tag + fix_element.text).translate(str.maketrans('', '', '\n\r\t')))
         print(("origin:  " + output_element.tag + output_element.text).translate(str.maketrans('', '', '\n\r\t')))
         output_element.text = fix_element.text
-        #  for element in fix_element.iter():
-        #      if element.type != None
-
-        #     for sub_element in element.iter():
-        # self.iterate_sections(output_element)
-        # output_element=fix_element
-        # self.iterate_sections(output_element)
-
-        # # # fix_element.set('action', "updated")
-        # self.original_tree.write("fix_law2.xml", encoding="UTF-8")
-        #
-        # for i in range(len(fix_element)):
-        #     # if(fix_element[i].get("id")!=None):
-        #     print(fix_element[i].get("id"))
-        #     # print(fix_element[i].tag)
-        #     # if (fix_element[i].get('action') == "update"):
-        #     fix_element[i].set('action', "updated")
-        #     self.fix_tree.write("fix_law2.xml", encoding="UTF-8")
-        #     if (fix_element[i].tag == 'text'):
-        #         output_element[i].text = fix_element[i].text
-        #         self.original_tree.write("output.xml", encoding="UTF-8")
-        #     else:
-        #         try:
-        #             self.update(fix_element[i], output_element[i])
-        #         except:
-        #             print("sdsdsd")
-
-        # def update_blank(self, element, output_element):
- 
         
-
-
-
-
-
-
-
-
-        # for i in range(len(fix_element)):
-        #     print(fix_element[i])
-        #     if fix_element[i].tag =='text':
-        #         output_element[i].text = fix_element[i].text
-        #         # self.original_tree.write("output.xml", encoding="UTF-8")
-
-        #     elif fix_element[i].tag != None:
-        #         try:
-        #             if fix_element[i].get("action") == "remove":
-        #                 self.delete(fix_element[i], output_element[i])
-        #             elif fix_element[i].get("action") == "update-blank":
-        #                 self.update_blank(fix_element[i], output_element[i])
-        #             elif fix_element[i].get("action") == "update":
-        #                 self.update(fix_element[i], output_element[i])
-        #             elif fix_element[i].get("action") == "add":
-        #                 self.add(fix_element[i], output_element)
-        #         # else:
-        #         #     if (sub_element.tag == 'text'):
-        #         #         output_element.text = sub_element.text
-        #         #         self.original_tree.write("output.xml", encoding="UTF-8")
-        #         #     else:
-        #         #         try:
-        #         #             self.update(sub_element,  self.get_output_element(sub_element, output_element))
-        #         except:
-        #                     print("sdsdsd")
-
 
 
 
